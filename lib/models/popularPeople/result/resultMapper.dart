@@ -2,15 +2,15 @@ import 'package:axisapp/models/popularPeople/knownFor/knownForMapper.dart';
 import 'package:axisapp/models/popularPeople/popularPeopleMapper.dart';
 
 class Result {
-  bool adult;
-  int gender;
-  int id;
+  bool? adult;
+  int? gender;
+  int? id;
   String? knownForDepartment;
-  String name;
-  String originalName;
-  double popularity;
-  String profilePath;
-  List<KnownFor> knownFor;
+  String? name;
+  String? originalName;
+  double? popularity;
+  String? profilePath;
+  List<KnownFor>? knownFor;
 
   Result({
     required this.adult,
@@ -45,6 +45,6 @@ class Result {
     "original_name": originalName,
     "popularity": popularity,
     "profile_path": profilePath,
-    "known_for": List<dynamic>.from(knownFor.map((x) => x.toJson())),
+    "known_for": List<dynamic>.from(knownFor!.map((x) => x.toJson())),
   };
 }

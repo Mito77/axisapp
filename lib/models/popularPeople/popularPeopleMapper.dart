@@ -8,10 +8,10 @@ PopularPeopleMapper popularPeopleMapperFromJson(String str) => PopularPeopleMapp
 String popularPeopleMapperToJson(PopularPeopleMapper data) => json.encode(data.toJson());
 
 class PopularPeopleMapper {
-  int page;
-  List<Result> results;
-  int totalPages;
-  int totalResults;
+  int? page;
+  List<Result>? results;
+  int? totalPages;
+  int? totalResults;
 
   PopularPeopleMapper({
     required this.page,
@@ -29,7 +29,7 @@ class PopularPeopleMapper {
 
   Map<String, dynamic> toJson() => {
     "page": page,
-    "results": List<dynamic>.from(results.map((x) => x.toJson())),
+    "results": List<dynamic>.from(results!.map((x) => x.toJson())),
     "total_pages": totalPages,
     "total_results": totalResults,
   };

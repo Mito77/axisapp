@@ -92,7 +92,7 @@ class ResponseHandLer {
 
   Widget getCustomProgress({
     double loaderSize = 50,
-    Color loaderColor = accentColor,
+    Color loaderColor = accentGreen,
   }) =>
       CustomProgress(
         color: loaderColor,

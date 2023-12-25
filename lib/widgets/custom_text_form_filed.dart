@@ -163,7 +163,7 @@ class CustomTextFormFiled extends StatelessWidget {
             child: CustomText(
                 text: !isLabel ? '  ${labelText}' : null ?? '',
                 textAlign: TextAlign.start,
-                customTextStyle: BoldStyle(fontSize: 16.sp, color: loginText))),
+                customTextStyle: BoldStyle(fontSize: 16.sp, color: darkBlue))),
         // fillColor: usedInAppBar ? Colors.white : Colors.transparent,
         // filled: usedInAppBar,
         suffixIcon: isPassword ? _passwordIcon : suffixIcon,

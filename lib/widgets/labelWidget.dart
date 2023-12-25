@@ -62,7 +62,7 @@ Widget labelWidget(title, text, icon,h,w) {
                           text: '${text}',
                           textAlign: TextAlign.start,
                           customTextStyle:
-                          BoldStyle(color: loginText, fontSize: 16.sp),
+                          BoldStyle(color: darkBlue, fontSize: 16.sp),
                         )),
                   ),
                 ],

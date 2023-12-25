@@ -1,20 +1,20 @@
 
 class KnownFor {
-  bool adult;
+  bool? adult;
   String? backdropPath;
-  int id;
+  int? id;
   String? title;
   String? originalLanguage;
   String? originalTitle;
-  String overview;
+  String? overview;
   String? posterPath;
   String? mediaType;
-  List<int> genreIds;
-  double popularity;
+  List<int>? genreIds;
+  double? popularity;
   DateTime? releaseDate;
   bool? video;
-  double voteAverage;
-  int voteCount;
+  double? voteAverage;
+  int? voteCount;
   String? name;
   String? originalName;
   String? firstAirDate;
@@ -74,7 +74,7 @@ class KnownFor {
     "overview": overview,
     "poster_path": posterPath,
     "media_type": mediaType,
-    "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
+    "genre_ids": List<dynamic>.from(genreIds!.map((x) => x)),
     "popularity": popularity,
     "release_date": "${releaseDate!.year.toString().padLeft(4, '0')}-${releaseDate!.month.toString().padLeft(2, '0')}-${releaseDate!.day.toString().padLeft(2, '0')}",
     "video": video,

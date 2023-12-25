@@ -1,5 +1,6 @@
 
 import 'package:axisapp/view/home/homePage.dart';
+import 'package:axisapp/view/splashScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -56,6 +57,9 @@ class ViewHelper {
 
   void openHomePageWidget() {
     pushScreen(homePageWidget());
+  }
+  void openSplashWidget() {
+    pushScreen(SplashWidget());
   }
 
 }

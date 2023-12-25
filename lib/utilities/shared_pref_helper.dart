@@ -160,31 +160,9 @@ class SharedPRefHelper {
     return '';
   }
 
-  void setUserId(String userId) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.userId.toString());
-  }
 
-  void setBearerToken(String value) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.bearerToken.toString());
-  }
-
-  void setAccessToken(String value) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.access_token.toString());
-  }
-
-  void setRefreshToken(String value) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.refresh_token.toString());
-  }
-
-  void setHashKey(String hashKey) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.hashKey.toString());
-  }
-
- void setPassengersData(String passengersData) {
-    SimpleSharedPref().setValue(key: SharedPrefEnum.passengersData.toString(), value: passengersData);
-  }
-  void setTicketPrice(String ticketPrice) {
-    SimpleSharedPref().setValue(key: SharedPrefEnum.ticketPrice.toString(), value: ticketPrice);
+  void setBearerToken(String bearerToken) {
+    SimpleSharedPref().setValue(key: SharedPrefEnum.bearerToken.toString(), value: bearerToken);
   }
 
 
@@ -192,65 +170,7 @@ class SharedPRefHelper {
     SimpleSharedPref().getValue(key: SharedPrefEnum.loginNumber.toString());
   }
 
-  void setLoginPassword(String loginPassword) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.loginPassword.toString());
-  }
 
-  void setPatientName(String patientName) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.patientName.toString());
-  }
-
-  void setRememberMePassword(bool rememberMe) {
-    SimpleSharedPref()
-        .setValue(value: rememberMe, key: SharedPrefEnum.rememberMe.toString());
-  }
-
-  void setBookingId(String bookingId) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.bookingId.toString());
-  }
-
-  void setBookingDate(String bookingDate) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.bookingDate.toString());
-  }
-
-  void setUserData(String userData) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.userData.toString());
-  }
-
-  void setEmail(String email) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.email.toString());
-  }
-
-  void setDeviceId(String Device_ID) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.Device_ID.toString());
-  }
-
-  void setReservation_number(String reservation_number) {
-    SimpleSharedPref()
-        .setValue(value: reservation_number, key: SharedPrefEnum.reservation_number.toString());
-  }
-
-  void setReservationDateTo(String reservationDateTo) {
-    SimpleSharedPref()
-        .getValue(key: SharedPrefEnum.reservationDateTo.toString());
-  }
-
-  void setShiftID(String Shift_ID) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.Shift_ID.toString());
-  }
-
-  void setExaminationDate(String examinationDate) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.examinationDate.toString());
-  }
-
-  void setPatientPhone(String patientPhone) {
-    SimpleSharedPref().getValue(key: SharedPrefEnum.patientPhone.toString());
-  }
-
-  void setDarkMode(bool value) {
-    SimpleSharedPref()
-        .setValue(key: SharedPrefEnum.isLight.toString(), value: value);
-  }
 
   void setLanguage(String value) {
     SimpleSharedPref().getValue(key: SharedPrefEnum.language.toString());

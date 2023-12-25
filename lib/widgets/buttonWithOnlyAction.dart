@@ -8,7 +8,7 @@ Widget buttonWithOnlyAction(String text, action, isBorder, context, fontSize,
    onTap, {double? btnHeight}) {
   return CustomButton(
     idleText: text,
-     buttonColor:loginText,
+     buttonColor:darkBlue,
     textColor: textColor,
     onTap: onTap,
     textSize: fontSize,

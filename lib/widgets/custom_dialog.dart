@@ -76,7 +76,7 @@ class CustomAppDialog extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomText(
             text: descriptionString,
-            customTextStyle: RegularStyle(color: loginText, fontSize: 16.sp),
+            customTextStyle: RegularStyle(color: darkBlue, fontSize: 16.sp),
             textAlign: TextAlign.center,
           ),
         ),

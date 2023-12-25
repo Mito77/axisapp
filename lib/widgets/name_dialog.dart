@@ -55,7 +55,7 @@ class NameDialog {
         textAlign: TextAlign.center,
         customTextStyle: BoldStyle(
           fontSize: 18.sp,
-          color: loginText,
+          color: darkBlue,
         ),
       ),
       actions: [

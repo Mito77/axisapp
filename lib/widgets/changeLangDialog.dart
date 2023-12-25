@@ -79,14 +79,14 @@ Future changeLangDialog(context, h, w,onTap,onTapAr) {
                                 Radius.circular(5.0),
                               ),
                               border: Border.all(
-                                  color: i == 0 ? buttonColor : loginText)),
+                                  color: i == 0 ? buttonColor : darkBlue)),
                           padding: EdgeInsets.symmetric(vertical: h * .01),
                           alignment: Alignment.center,
                           child: CustomText(
                               textAlign: TextAlign.center,
                               customTextStyle: BoldStyle(
                                   fontSize: 17.sp,
-                                  color: i == 0 ? buttonColor : loginText),
+                                  color: i == 0 ? buttonColor : darkBlue),
                               text: i == 0 ? 'English' : 'العربية'),
                         ),
                       ),

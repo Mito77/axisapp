@@ -28,5 +28,6 @@ const Color redColor = Color.fromARGB(255, 255, 0, 0);
 const Color descColor = Color.fromARGB(255, 101, 98, 98);
 const Color hintColor = Color.fromARGB(255, 72, 72, 72);
 const Color whiteColor = Color.fromARGB(255, 255, 255, 255);
-const Color loginText = Color.fromARGB(255, 18, 67, 127);
+const Color darkBlue = Color.fromARGB(255, 18, 67, 127);
+const Color accentGreen = Color(0xFF0bcca6);
 const Color greyColor = Color.fromARGB(255, 230, 230, 230);
