@@ -1,0 +1,32 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+
+const Color accentColor = Color.fromARGB(255, 0, 85, 162);
+const Color buttonColor = Color.fromARGB(255, 189, 142, 24);
+const Color discountColor = Color.fromARGB(255, 38, 135, 222);
+const Color goldColor = Color.fromARGB(255, 123, 120, 44);
+const Color questColor = Color.fromARGB(255, 224, 221, 234);
+ const Color textColor = Color.fromARGB(255, 226, 233, 241);
+const Color onBoardingColor = Color.fromARGB(255, 130, 121, 157);
+ const Color borderColor = Color.fromARGB(255, 207, 216, 220);
+const Color greyBorder = Color.fromARGB(255, 237, 236, 244);
+const Color containerColor = Color.fromARGB(255, 89, 92, 109);
+const Color orangeColor = Color.fromARGB(255, 255, 206, 79);
+const Color greyTextForm = Color.fromARGB(255, 128, 129, 134);
+ const Color descTextForm = Color.fromARGB(255, 138, 150, 188);
+const Color answerColor = Color.fromARGB(255, 99, 85, 81);
+const Color greyBottom = Color.fromARGB(255, 191, 191, 191);
+const Color blackColor = Color.fromARGB(255, 0, 0, 0);
+const Color backColor = Color.fromARGB(255, 255, 250, 221);
+ const Color nameDocColor = Color.fromARGB(255, 1, 48, 63);
+const Color blackTextColor = Color.fromARGB(255, 64, 67, 69);
+const Color greenColor = Color.fromARGB(255, 0, 130, 0);
+const Color yellowColor = Color.fromARGB(255, 255, 206, 79);
+const Color yellow2Color = Color.fromARGB(255, 123, 120, 44);
+const Color redColor = Color.fromARGB(255, 255, 0, 0);
+const Color descColor = Color.fromARGB(255, 101, 98, 98);
+const Color hintColor = Color.fromARGB(255, 72, 72, 72);
+const Color whiteColor = Color.fromARGB(255, 255, 255, 255);
+const Color loginText = Color.fromARGB(255, 18, 67, 127);
+const Color greyColor = Color.fromARGB(255, 230, 230, 230);
