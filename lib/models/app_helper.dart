@@ -50,7 +50,7 @@ class AppHelper with ChangeNotifier {
   Future<void> _initAppLanguage() async {
     if (!SimpleSharedPref().containsKey( SharedPrefEnum.language.toString()))
       await SimpleSharedPref()
-          .setValue(value: 'ar', key: SharedPrefEnum.language.toString());
+          .setValue(value: 'en', key: SharedPrefEnum.language.toString());
     Constant.appLanguage =
         SimpleSharedPref().getValue(key: SharedPrefEnum.language.toString())!;
     return Future.value();

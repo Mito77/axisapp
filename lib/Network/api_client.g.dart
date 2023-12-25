@@ -19,9 +19,16 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<HeaderResponse> station() async {
+  Future<HeaderResponse> popularPeople(
+      String language,
+      int page,
+      ) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'language': language,
+      r'page': page,
+
+    };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -30,181 +37,13 @@ class _ApiClient implements ApiClient {
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              'basic-data/station/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = HeaderResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<HeaderResponse> newTicket(Map<String, dynamic> map) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(map);
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<HeaderResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
+        .compose(
+      _dio.options,
+      'person/popular',
+      queryParameters: queryParameters,
+      data: _data,
     )
-            .compose(
-              _dio.options,
-              'reservation/new-ticket/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = HeaderResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<HeaderResponse> getReservationNumber() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<HeaderResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'reservation/start-reservation-process/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = HeaderResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<HeaderResponse> cancelReservation(Map<String, dynamic> map) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(map);
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<HeaderResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'reservation/cancel-reservation_ticket/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = HeaderResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<HeaderResponse> seatStatus() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<HeaderResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'basic-data/seat-status/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = HeaderResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<HeaderResponse> tripStatus(String trip) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<HeaderResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'operation/trip-seat/?trip=${trip}&arg=45',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = HeaderResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<HeaderResponse> avaliableTrip(String date) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<HeaderResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'reservation/avaliable-trip/?fields_names=trip_date,station_id_from,station_id_to&fields_values=${date}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = HeaderResponse.fromJson(_result.data!);
     return value;
   }
