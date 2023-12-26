@@ -12,7 +12,9 @@ class _ApiClient implements ApiClient {
   _ApiClient(
     this._dio, {
     this.baseUrl,
-  });
+  }) {
+    baseUrl ??= 'https://api.themoviedb.org/3/';
+  }
 
   final Dio _dio;
 
@@ -20,14 +22,13 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<HeaderResponse> popularPeople(
-      String language,
-      int page,
-      ) async {
+    String language,
+    int page,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'language': language,
       r'page': page,
-
     };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
@@ -37,23 +38,28 @@ class _ApiClient implements ApiClient {
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-      _dio.options,
-      'person/popular',
-      queryParameters: queryParameters,
-      data: _data,
-    )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .compose(
+              _dio.options,
+              'person/popular',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = HeaderResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<HeaderResponse> details(int person_id, String language,) async {
+  Future<HeaderResponse> details(
+    int person_id,
+    String language,
+  ) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'language': language,
-    };
+    final queryParameters = <String, dynamic>{r'language': language};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -62,13 +68,17 @@ class _ApiClient implements ApiClient {
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-      _dio.options,
-      'person/${person_id}',
-      queryParameters: queryParameters,
-      data: _data,
-    )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .compose(
+              _dio.options,
+              'person/${person_id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = HeaderResponse.fromJson(_result.data!);
     return value;
   }
@@ -76,8 +86,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<HeaderResponse> images(int person_id) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -86,13 +95,17 @@ class _ApiClient implements ApiClient {
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-      _dio.options,
-      'person/${person_id}/images',
-      queryParameters: queryParameters,
-      data: _data,
-    )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .compose(
+              _dio.options,
+              'person/${person_id}/images',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = HeaderResponse.fromJson(_result.data!);
     return value;
   }

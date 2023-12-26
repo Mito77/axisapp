@@ -1,5 +1,4 @@
 import 'package:axisapp/models/popularPeople/knownFor/knownForMapper.dart';
-import 'package:axisapp/models/popularPeople/popularPeopleMapper.dart';
 
 class Result {
   bool? adult;
@@ -23,6 +22,25 @@ class Result {
     required this.profilePath,
     required this.knownFor,
   });
+  Result.offLine({  required adult,
+    required gender,
+    required id,
+    required knownForDepartment,
+    required name,
+    required originalName,
+    required popularity,
+    required profilePath,
+    required knownFor,}){
+    this.adult=adult;
+    this.gender=gender;
+    this.id=id;
+    this.knownForDepartment=knownForDepartment;
+    this.name=name;
+    this.originalName=originalName;
+    this.popularity=popularity;
+    this.profilePath=profilePath;
+    this.knownFor=knownFor;
+  }
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
     adult: json["adult"],

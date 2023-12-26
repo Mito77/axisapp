@@ -1,5 +1,6 @@
+import 'dart:developer';
 import 'dart:io';
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:axisapp/models/Details/Details.dart';
 import 'package:axisapp/models/Images/ImagesMapper.dart';
 import 'package:axisapp/models/Images/Porfiles/profilesMapper.dart';
@@ -42,7 +43,6 @@ class _homePageViewState extends BaseState<homePageWidget>
   List<bool> isContainerOpenList = [];
   DetailsMapper? detailsItems;
   List<Profile>? imagesItems;
-  late final Box<Result> resultsBox;
 
   String formattedBirthday(birthday) {
     var formatter = DateFormat('yyyy-MM-dd', 'en_US');
@@ -54,7 +54,7 @@ class _homePageViewState extends BaseState<homePageWidget>
   @override
   void initState() {
     super.initState();
-    resultsBox = Hive.box<Result>('results');
+    // saveApiData();
     hasMore = true;
     _homeBloc.init();
     fetchResultsData();
@@ -84,45 +84,44 @@ class _homePageViewState extends BaseState<homePageWidget>
 
   fetchResultsData() async {
     try {
-      if (hasMore) {
-        List<Result> newResultItems = await _homeBloc
-            .callGetPopularPeopleDataApi(context, language, PageNumber);
-        print("newResultItems ${newResultItems}");
+      var connectivityResult = await Connectivity().checkConnectivity();
+      List<Result> newResultItems = [];
 
-        if (newResultItems.isEmpty) {
-          setState(() {
-            hasMore = false;
-          });
-        } else {
-          setState(() {
-            items.addAll(newResultItems);
-            isContainerOpenList =
-                List.generate(items.length, (index) => false);
-            PageNumber++;
-          });
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        if (hasMore) {
+          newResultItems =
+          await _homeBloc.callGetPopularPeopleDataApi(context, language, PageNumber);
 
-          try {
-            await Hive.openBox<Result>('results');
-
-            resultsBox.putAll(
-                Map.fromIterable(newResultItems, key: (item) => item.id));
-            print("saved");
-          } catch (e) {
-            print('Error opening or saving data to Hive: $e');
+          if (newResultItems.isEmpty) {
+            setState(() {
+              hasMore = false;
+            });
           }
+          else
+            {
+              setState(() {
+                items.addAll(newResultItems);
+               isContainerOpenList = List.generate(items.length, (index) => false);
+                PageNumber++;
+              });
+            }
         }
+      } else {
+        newResultItems =
+        await _homeBloc.callGetPopularPeopleDataApi(context, language, PageNumber);
+        setState(() {   items.addAll(newResultItems);
+        isContainerOpenList = List.generate(items.length, (index) => false);
+
+        hasMore = false;
+        });
       }
+
     } catch (error) {
       print('Error in fetchResultsData: $error');
-      setState(() {
-        items.addAll(resultsBox.values);
-        isContainerOpenList =
-            List.generate(items.length, (index) => false);
-        hasMore = false;
-      });
+
     }
   }
-
 
   @override
   PreferredSizeWidget? appBar() => null;
@@ -161,31 +160,32 @@ class _homePageViewState extends BaseState<homePageWidget>
       width: w,
       child: ListView.builder(
         controller: controller,
-        itemCount: items.length + (hasMore ? 1 : 0),
+        itemCount: items.length + 1,
         itemBuilder: (context, index) {
-          if (index == items.length) {
-            return LoadingIndicator();
+          if (index < items.length) {
+            Result result = items[index];
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                resultTile(result, index),
+              /*  if (isContainerOpenList[index] &&
+                    detailsItems != null &&
+                    imagesItems != null)
+                  Column(
+                    children: [
+                      DetailsContainer(detailsItems!),
+                      ImagesGridView(),
+                    ],
+                  ),*/
+              ],
+            );
           } else {
-            if (hasMore) {
-              Result result = items[index];
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  resultTile(result, index),
-                  if (isContainerOpenList[index] &&
-                      detailsItems != null &&
-                      imagesItems != null)
-                    Column(
-                      children: [
-                        DetailsContainer(detailsItems!),
-                        ImagesGridView(),
-                      ],
-                    ),
-                ],
-              );
-            }
+            return hasMore
+                ? LoadingIndicator()
+                : Container();
           }
+
         },
       ),
     );

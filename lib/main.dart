@@ -15,7 +15,6 @@ Future<void> main() async {
 
   await Hive.initFlutter();
   Hive.registerAdapter(ResultAdapter());
-  await Hive.openBox<Result>('results');
 
   WidgetsFlutterBinding.ensureInitialized();
 
