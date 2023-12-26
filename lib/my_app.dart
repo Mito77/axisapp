@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:axisapp/main.dart';
 import 'package:axisapp/utilities/shared_pref_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -21,6 +22,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    main();
   }
 
   @override

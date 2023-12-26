@@ -1,4 +1,5 @@
 
+import 'package:axisapp/view/displayImage/displayImage.dart';
 import 'package:axisapp/view/home/homePage.dart';
 import 'package:axisapp/view/splashScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,30 @@ class ViewHelper {
             builder: (context) => widget,
           ));
   }
+  showSnakeBar(String text,
+      {SnackBarAction? action,
+        Color snakeColorBackGround = accentGreen,
+        Color textColor = Colors.white,
+        double elevation = 0.0,
+        int durationInMilliSeconds = 2000}) async {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Container(
+        alignment: Alignment.center,
+        height: 30.h,
+        child: CustomText(
+          text: text,
+          customTextStyle: SemiBoldStyle(fontSize: 12.sp, color: textColor),
+        ),
+      ),
+      backgroundColor: snakeColorBackGround,
+      elevation: elevation,
+      behavior: SnackBarBehavior.floating,
+      action: action,
+      padding:
+      EdgeInsets.only(left: 16.0.w, right: 16.0.w, top: 12.h, bottom: 12.h),
+      duration: Duration(milliseconds: durationInMilliSeconds),
+    ));
+  }
 
 
   void showCustomBottomSheetFullScreen(Widget child,
@@ -55,11 +80,15 @@ class ViewHelper {
   }
 
 
+
   void openHomePageWidget() {
     pushScreen(homePageWidget());
   }
   void openSplashWidget() {
     pushScreen(SplashWidget());
+  }
+  void openDisplayImageWidget(imagePath) {
+    pushScreen(DisplayImageWidget(imagePath: imagePath,));
   }
 
 }

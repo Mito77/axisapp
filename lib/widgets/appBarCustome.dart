@@ -14,7 +14,7 @@ Widget appBarCustom(w, h, context,title,route,showBack) {
       padding:   EdgeInsets.only(
           left: w*.06,
           right: w*.06,
-          top: h*.01
+          top: h*.03
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

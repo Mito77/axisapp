@@ -2,11 +2,11 @@
 
 import 'dart:convert';
 
-PopularPeopleMapper popularPeopleMapperFromJson(String str) => PopularPeopleMapper.fromJson(json.decode(str));
+DetailsMapper detailsMapperFromJson(String str) => DetailsMapper.fromJson(json.decode(str));
 
-String popularPeopleMapperToJson(PopularPeopleMapper data) => json.encode(data.toJson());
+String detailsMapperToJson(DetailsMapper data) => json.encode(data.toJson());
 
-class PopularPeopleMapper {
+class DetailsMapper {
   bool? adult;
   List<String>? alsoKnownAs;
   String? biography;
@@ -22,7 +22,7 @@ class PopularPeopleMapper {
   double? popularity;
   String? profilePath;
 
-  PopularPeopleMapper({
+  DetailsMapper({
     required this.adult,
     required this.alsoKnownAs,
     required this.biography,
@@ -39,7 +39,7 @@ class PopularPeopleMapper {
     required this.profilePath,
   });
 
-  factory PopularPeopleMapper.fromJson(Map<String, dynamic> json) => PopularPeopleMapper(
+  factory DetailsMapper.fromJson(Map<String, dynamic> json) => DetailsMapper(
     adult: json["adult"],
     alsoKnownAs: List<String>.from(json["also_known_as"].map((x) => x)),
     biography: json["biography"],

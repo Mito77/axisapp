@@ -32,7 +32,7 @@ class _CustomProgressState extends State<CustomProgress>
         alignment: Alignment.center,
         child:SpinKitWaveSpinner(
           waveColor:whiteColor ,
-        color: buttonColor,
+        color: accentGreen,
         size: 60.sp,
       )
       ),
