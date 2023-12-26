@@ -169,7 +169,7 @@ class _homePageViewState extends BaseState<homePageWidget>
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 resultTile(result, index),
-              /*  if (isContainerOpenList[index] &&
+              if (isContainerOpenList[index] &&
                     detailsItems != null &&
                     imagesItems != null)
                   Column(
@@ -177,7 +177,7 @@ class _homePageViewState extends BaseState<homePageWidget>
                       DetailsContainer(detailsItems!),
                       ImagesGridView(),
                     ],
-                  ),*/
+                  ),
               ],
             );
           } else {
